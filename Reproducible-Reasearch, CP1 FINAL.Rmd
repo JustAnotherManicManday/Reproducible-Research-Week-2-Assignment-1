@@ -100,14 +100,12 @@ impsteps <- summarise(imputed, steps = sum(steps))
 imputed <- ungroup(imputed)
 impsteps <- ungroup(impsteps)
 
-jpeg("Rplot2.jpg")
 ggplot() + geom_histogram(data = impsteps, aes(steps, fill = ..x..), bins = 20) +
         theme_dark() +
         scale_y_continuous(breaks = c(0, 2, 4, 6)) +
         labs(title = "Daily Steps Taken of Imputed Data", x = "Steps", y = "Count") + 
         scale_fill_gradient(low = "blue", high = "red") + 
         theme(legend.position = "none")
-dev.off()
 ```
 
 

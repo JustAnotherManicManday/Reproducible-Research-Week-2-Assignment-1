@@ -26,7 +26,7 @@ d <- date()
 mydata <- read.csv(unz("stepsdata", "activity.csv"))
 mydata$date <- ymd(mydata$date)
 ```
-The date that this data was downloaded was Sat May 09 18:29:53 2020
+The date that this data was downloaded was Sat May 09 18:33:02 2020
 
 
 ### 2 - Histogram of the total number of steps taken each day
@@ -111,20 +111,15 @@ impsteps <- summarise(imputed, steps = sum(steps))
 imputed <- ungroup(imputed)
 impsteps <- ungroup(impsteps)
 
-jpeg("Rplot2.jpg")
 ggplot() + geom_histogram(data = impsteps, aes(steps, fill = ..x..), bins = 20) +
         theme_dark() +
         scale_y_continuous(breaks = c(0, 2, 4, 6)) +
         labs(title = "Daily Steps Taken of Imputed Data", x = "Steps", y = "Count") + 
         scale_fill_gradient(low = "blue", high = "red") + 
         theme(legend.position = "none")
-dev.off()
 ```
 
-```
-## png 
-##   2
-```
+![](Reproducible-Reasearch,-CP1-FINAL_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 
 ### 8 - Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
